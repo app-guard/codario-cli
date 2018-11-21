@@ -8,7 +8,7 @@ Codario helps you monitor and update NPM and Composer packages.
 
 ## Installation
 
-1. Install the App Guard utility using `npm install -g codario`.
+1. Install the Codario utility using `npm install -g codario`.
 2. Once installed you will need to authenticate: `codario auth`.
 
 ## CLI
