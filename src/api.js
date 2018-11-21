@@ -76,9 +76,10 @@ const getToken = () => {
   }
 
   /**
-   * @type {string}
+   * @type {string} token
    */
   const token = store.get('token');
+
   const data = jwtDecode(token);
   const now = Date.now() / 1000 | 0;
 
