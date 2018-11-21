@@ -1,7 +1,7 @@
 // Define the necessary modules.
 const rp = require('request-promise');
-const { fail } = require('./console');
-const { store } = require('./store');
+const {fail} = require('./console');
+const {store} = require('./store');
 const jwtDecode = require('jwt-decode');
 
 // Define API path.
@@ -70,7 +70,7 @@ const request = (path, method, body = {}, withToken = true) => {
 /**
  * @return {string|null}
  */
-function getToken() {
+const getToken = () => {
   if (!store.has('token')) {
     return null;
   }
@@ -87,7 +87,7 @@ function getToken() {
   }
 
   return null;
-}
+};
 
 /**
  * @param {object} options
@@ -96,7 +96,7 @@ function getToken() {
  *
  * @return {void}
  */
-function requestToken(options, thenFns, catchFns) {
+const requestToken = (options, thenFns, catchFns) => {
   const _options = {
     uri: basepath + 'token/refresh',
     method: 'POST',
@@ -123,9 +123,14 @@ function requestToken(options, thenFns, catchFns) {
 
     fail(`Unable to update your access token. Please authorize again using "codario auth".`);
   });
-}
+};
 
-function attachGlobalCatch(promise) {
+/**
+ * @param {Promise} promise
+ *
+ * @return {void}
+ */
+const attachGlobalCatch = (promise) => {
   promise.catch(err => {
     let msg = '';
 
@@ -143,9 +148,16 @@ function attachGlobalCatch(promise) {
 
     return false;
   });
-}
+};
 
-function processRequest(promise, thenFns, catchFns) {
+/**
+ * @param {Promise} promise
+ * @param {array} thenFns
+ * @param {array} catchFns
+ *
+ * @return {void}
+ */
+const processRequest = (promise, thenFns, catchFns) => {
   for (let fn of thenFns) {
     promise.then(fn);
   }
@@ -155,7 +167,7 @@ function processRequest(promise, thenFns, catchFns) {
   }
 
   attachGlobalCatch(promise);
-}
+};
 
 module.exports = {
   request,

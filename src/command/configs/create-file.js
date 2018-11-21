@@ -1,8 +1,8 @@
 // Define the necessary modules.
-const { prompt } = require('inquirer');
+const {prompt} = require('inquirer');
 const fs = require('fs');
-const { success, warning, fail } = require('../../console');
-const { isAuthBefore, store } = require('../../store');
+const {success, warning, fail} = require('../../console');
+const {isAuthBefore, store} = require('../../store');
 const bestPractices = require('./best-practices');
 
 // Define the config file name.

@@ -3,11 +3,11 @@ const fs = require('fs');
 const shell = require('shelljs');
 const path = require('path');
 const recursive = require('recursive-readdir');
-const { prompt } = require('inquirer');
-const { request } = require('../../api');
-const { success, warning, fail } = require('../../console');
-const { isAuthBefore } = require('../../store');
-const { createConfigFileAction } = require('../configs/create-file');
+const {prompt} = require('inquirer');
+const {request} = require('../../api');
+const {success, warning, fail} = require('../../console');
+const {isAuthBefore} = require('../../store');
+const {createConfigFileAction} = require('../configs/create-file');
 
 // Define the "Create prompt" prompt.
 const createProjectPrompt = [

@@ -1,8 +1,8 @@
 // Define the necessary modules.
-const { prompt } = require('inquirer');
-const { request } = require('../api');
-const { success, warning, fail } = require('../console');
-const { store, isAuthBefore } = require('../store');
+const {prompt} = require('inquirer');
+const {request} = require('../api');
+const {success, warning, fail} = require('../console');
+const {store, isAuthBefore} = require('../store');
 
 // Define the "Auth" prompt.
 const authPrompt = [
