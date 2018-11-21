@@ -3,10 +3,11 @@ const fs = require('fs');
 const shell = require('shelljs');
 const path = require('path');
 const recursive = require('recursive-readdir');
-const {prompt} = require('inquirer');
-const {request} = require('../../api');
-const {success, warning, fail} = require('../../console');
-const {isAuthBefore} = require('../../store');
+const { prompt } = require('inquirer');
+const { request } = require('../../api');
+const { success, warning, fail } = require('../../console');
+const { isAuthBefore } = require('../../store');
+const { createConfigFileAction } = require('../configs/create-file');
 
 // Define the "Create prompt" prompt.
 const createProjectPrompt = [
@@ -44,6 +45,16 @@ const createProjectPrompt = [
     validate: function(value) {
       return !!value.length;
     },
+  },
+];
+
+// Define the "Create config file" prompt.
+const createConfigFilePrompt = [
+  {
+    type: 'confirm',
+    name: 'continue',
+    default: false,
+    message: 'Do you want to create JSON-config file?',
   },
 ];
 
@@ -180,7 +191,7 @@ const autofillPrompt = () => {
 };
 
 /**
- * @param {Object} data: contains {git_path, manager, root_folder, main_branch, name} properties.
+ * @param {object} data: contains {git_path, manager, root_folder, main_branch, name} properties.
  * @param {array} rootDirs: contains objects with {type, dir} properties.
  *
  * @return {string}
@@ -209,6 +220,15 @@ const createProjectRequest = (data, rootDirs = []) => {
     }
 
     success(`${messages} The link: https://app.app-guard.io/projects/${body.project}`);
+
+    const rootFolder = data.root_folder.length ? data.root_folder + '/' : '';
+
+    prompt(createConfigFilePrompt).then(answers => {
+      if (answers.continue) {
+        createConfigFileAction(rootFolder);
+      }
+    });
+
   }).done();
 };
 

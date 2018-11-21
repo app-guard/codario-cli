@@ -1,7 +1,7 @@
 // Define the necessary modules.
 const rp = require('request-promise');
-const {fail} = require('./console');
-const {store} = require('./store');
+const { fail } = require('./console');
+const { store } = require('./store');
 const jwtDecode = require('jwt-decode');
 
 // Define API path.

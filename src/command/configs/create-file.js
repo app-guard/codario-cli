@@ -1,8 +1,8 @@
 // Define the necessary modules.
-const {prompt} = require('inquirer');
+const { prompt } = require('inquirer');
 const fs = require('fs');
-const {success, warning, fail} = require('../../console');
-const {isAuthBefore, store} = require('../../store');
+const { success, warning, fail } = require('../../console');
+const { isAuthBefore, store } = require('../../store');
 const bestPractices = require('./best-practices');
 
 // Define the config file name.
@@ -19,39 +19,43 @@ const configFileAlreadyExistsPrompt = [
 ];
 
 /**
+ * @param {string} dir
+ *
  * @return {void}
  */
-const createConfigFileAction = () => {
+const createConfigFileAction = (dir = '') => {
   if (!isAuthBefore()) {
     fail('You need to be authorized for this action. Execute "codario auth" to continue.');
     return;
   }
 
-  fs.access(configFileName, fs.constants.F_OK, (err) => {
+  fs.access(dir + configFileName, fs.constants.F_OK, (err) => {
     if (!err) {
       warning('The JSON-config file already exists in this folder. If you will continue, the current file will be overridden.');
 
       prompt(configFileAlreadyExistsPrompt).then(answers => {
         if (answers.continue) {
-          createConfigFile();
+          createConfigFile(dir);
         }
       });
     } else {
-      createConfigFile();
+      createConfigFile(dir);
     }
   });
 };
 
 /**
+ * @param {string} dir
+ *
  * @return {void}
  */
-const createConfigFile = () => {
+const createConfigFile = (dir = '') => {
   const email = store.get('email');
   let configs = JSON.stringify(bestPractices, null, 2);
 
   configs = configs.replace(/\[email\]/, email);
 
-  fs.writeFile(configFileName, configs, (err) => {
+  fs.writeFile(dir + configFileName, configs, (err) => {
     if (err) {
       fail(err.message);
       return;
