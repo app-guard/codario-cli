@@ -22,18 +22,18 @@ const createProjectPrompt = [
   {
     type: 'list',
     name: 'manager',
-    message: 'Manager',
+    message: 'Manager:',
     choices: ['composer', 'npm'],
   },
   {
     type: 'string',
     name: 'root_folder',
-    message: 'Root Folder',
+    message: 'Root Folder:',
   },
   {
     type: 'string',
     name: 'main_branch',
-    message: 'Main Branch',
+    message: 'Main Branch:',
     validate: function(value) {
       return !!value.length;
     },
@@ -41,7 +41,7 @@ const createProjectPrompt = [
   {
     type: 'string',
     name: 'name',
-    message: 'Name',
+    message: 'Name:',
     validate: function(value) {
       return !!value.length;
     },

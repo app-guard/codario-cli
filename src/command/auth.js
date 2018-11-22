@@ -9,7 +9,7 @@ const authPrompt = [
   {
     type: 'input',
     name: 'email',
-    message: 'Email',
+    message: 'Email:',
     validate: function(value) {
       return !!value.length;
     },
@@ -17,7 +17,7 @@ const authPrompt = [
   {
     type: 'password',
     name: 'password',
-    message: 'Password',
+    message: 'Password:',
     validate: function(value) {
       return !!value.length;
     },
