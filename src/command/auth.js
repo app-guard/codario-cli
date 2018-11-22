@@ -45,7 +45,7 @@ const authAction = () => {
   };
 
   if (isAuthBefore()) {
-    warning('You are already authorized in App Guard. If you will continue - current credentials will be lost.');
+    warning('You are already authorized for using the Codario CLI tool. If you continue, current credentials will get lost.');
 
     prompt(alreadyAuthBeforePrompt).then(answers => {
       if (answers.continue) {
@@ -67,7 +67,7 @@ const authRequest = (data) => {
     body.email = data.email;
     store.set(body);
 
-    success(`You are authorized successfully. Your credentials have been stored in "~/.config/codario". Don't share this data with anyone else!`);
+    success(` You are authorized now to use the Codario CLI tool. Your credentials have been stored in "~/.config/codario". Keep this data by yourself!`);
   }).catch(err => {
     if (401 !== err.statusCode) {
       return;

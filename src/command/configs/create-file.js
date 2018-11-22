@@ -25,13 +25,13 @@ const configFileAlreadyExistsPrompt = [
  */
 const createConfigFileAction = (dir = '') => {
   if (!isAuthBefore()) {
-    fail('You need to be authorized for this action. Execute "codario auth" to continue.');
+    fail('You need to be authorized to process this action. Execute "codario auth" to continue.');
     return;
   }
 
   fs.access(dir + configFileName, fs.constants.F_OK, (err) => {
     if (!err) {
-      warning('The JSON-config file already exists in this folder. If you will continue, the current file will be overridden.');
+      warning('This JSON-config file already exists in this folder. If you continue, the current file will be overridden.');
 
       prompt(configFileAlreadyExistsPrompt).then(answers => {
         if (answers.continue) {
@@ -62,7 +62,7 @@ const createConfigFile = (dir = '') => {
     }
 
     success('The JSON-config file ".appguard.json" has been created.');
-    warning('Remember that you need to commit and push this file to your "main branch" and after this JSON-config file will be imported automatically to the corresponding Codario project.');
+    warning('Remember that you need to commit and push this file to your "main branch". After this the JSON-config file will be imported automatically to the corresponding Codario project.');
   });
 };
 

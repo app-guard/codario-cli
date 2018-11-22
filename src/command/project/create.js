@@ -54,7 +54,7 @@ const createConfigFilePrompt = [
     type: 'confirm',
     name: 'continue',
     default: false,
-    message: 'Do you want to create JSON-config file?',
+    message: 'Do you want to create the JSON-config file?',
   },
 ];
 
@@ -63,7 +63,7 @@ const createConfigFilePrompt = [
  */
 const createProjectAction = () => {
   if (!isAuthBefore()) {
-    fail('You need to be authorized for this action. Execute "codario auth" to continue.');
+    fail('You need to be authorized to process this action. Execute "codario auth" to continue.');
     return;
   }
 
@@ -104,7 +104,7 @@ const createProjectAction = () => {
   }
 
   if (!fs.existsSync('.git/')) {
-    warning('You have executed this command outside a root of GIT repository, auto-filling is disabled!');
+    warning('You have executed this command outside a root of your GIT repository, the auto-filling is disabled!');
     showPrompt();
   } else {
     autofillPrompt().then(data => {
@@ -209,7 +209,7 @@ const createProjectRequest = (data, rootDirs = []) => {
     }
   }
 
-  warning('Creation of a project takes about 30 seconds...');
+  warning('The project will be created - you have 30 seconds to grab some water in the meantime, stay hydrated!');
 
   request('projects', 'POST', data).handler(body => {
     const messages = body.message.join(', ');

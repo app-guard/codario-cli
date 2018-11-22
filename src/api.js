@@ -122,7 +122,7 @@ const requestToken = (options, thenFns, catchFns) => {
   }).catch(() => {
     store.clear();
 
-    fail(`Unable to update your access token. Please authorize again using "codario auth".`);
+    fail(`It wasn't possible to update your access token. Please authorize again by using "codario auth".`);
   });
 };
 
