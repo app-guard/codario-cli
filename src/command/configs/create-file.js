@@ -62,6 +62,7 @@ const createConfigFile = (dir = '') => {
     }
 
     success('The JSON-config file ".appguard.json" has been created.');
+    warning('Remember that you need to commit and push this file to your "main branch" and after this JSON-config file will be imported automatically to the corresponding Codario project.');
   });
 };
 
