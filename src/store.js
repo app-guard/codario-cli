@@ -1,7 +1,9 @@
+// Define the necessary modules.
+const os = require('os');
 const Store = require('data-store');
 
 // Define the store service.
-const store = new Store({path: '~/.config/codario/auth.json'});
+const store = new Store({path: os.homedir() + '/.config/codario/auth.json'});
 
 /**
  * @return {boolean}
