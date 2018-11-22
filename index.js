@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Define the necessary modules.
 const program = require('commander');
 const { authAction } = require('./src/command/auth');
