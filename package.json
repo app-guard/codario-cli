@@ -1,5 +1,5 @@
 {
-  "name": "@app-guard/cli",
+  "name": "codario",
   "version": "1.0.0",
   "description": "Update automation for open source libraries.",
   "main": "index.js",
