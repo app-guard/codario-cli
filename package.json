@@ -1,6 +1,6 @@
 {
   "name": "codario",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Update automation for open source libraries.",
   "main": "index.js",
   "preferGlobal": true,
