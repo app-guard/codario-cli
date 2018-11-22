@@ -26,7 +26,7 @@ program
   .command('configs:create-file')
   .alias('ccf')
   .description('Create a config file.')
-  .action(createConfigFileAction);
+  .action(createConfigFileAction.bind(this, ''));
 
 program
   .on('command:*', function () {

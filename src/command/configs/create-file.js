@@ -53,7 +53,7 @@ const createConfigFile = (dir = '') => {
   const email = store.get('email');
   let configs = JSON.stringify(bestPractices, null, 2);
 
-  configs = configs.replace(/\[email\]/, email);
+  configs = configs.replace(/\[email\]/g, email);
 
   fs.writeFile(dir + configFileName, configs, (err) => {
     if (err) {
