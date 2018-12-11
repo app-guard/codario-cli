@@ -1,10 +1,13 @@
 # Codario
+
 Codario helps you monitor and update NPM and Composer packages.
+
+[Website](https://codario.io)
 
 
 ## Documentation
 
-[Full documentation is available on app-guard.io](https://app-guard.io/docs)
+[Full documentation is available on docs.codario.io](https://docs.codario.io)
 
 ## Installation
 
