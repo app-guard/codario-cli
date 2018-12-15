@@ -1,6 +1,6 @@
 {
   "name": "codario",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Update automation for open source libraries.",
   "main": "index.js",
   "preferGlobal": true,
@@ -16,8 +16,7 @@
   },
   "keywords": [
     "security",
-    "app-guard",
-    "appguard"
+    "codario"
   ],
   "author": "Alexey Beloglazov",
   "license": "Apache-2.0",
