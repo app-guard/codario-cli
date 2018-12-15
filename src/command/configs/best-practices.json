@@ -11,7 +11,7 @@
     "new_updates_available": [
       {
         "sendmail": {
-          "emails": "[email]",
+          "emails": "[user:email]",
           "subject": "New updates are available for [project:name]",
           "message": "[snippet:workflow.event.new-updates-available]",
           "cc": "",
@@ -22,7 +22,7 @@
     "ready_to_test": [
       {
         "sendmail": {
-          "emails": "[email]",
+          "emails": "[user:email]",
           "subject": "A task for [project:name] is ready for testing",
           "message": "[snippet:workflow.event.ready-to-test]",
           "cc": "",
@@ -44,7 +44,7 @@
     "failed": [
       {
         "sendmail": {
-          "emails": "[email]",
+          "emails": "[user:email]",
           "subject": "A task error occurred in [project:name]",
           "message": "[snippet:workflow.event.failed]",
           "cc": "",
@@ -55,7 +55,7 @@
     "patch_cant_be_applied": [
       {
         "sendmail": {
-          "emails": "[email]",
+          "emails": "[user:email]",
           "subject": "A task error occurred in [project:name]",
           "message": "[snippet:workflow.event.failed]",
           "cc": "",
