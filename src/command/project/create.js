@@ -219,7 +219,7 @@ const createProjectRequest = (data, rootDirs = []) => {
       return;
     }
 
-    success(`${messages} The link: https://app.app-guard.io/projects/${body.project}`);
+    success(`${messages} The link: https://app.codario.io/projects/${body.project}`);
 
     const rootFolder = data.root_folder.length ? data.root_folder + '/' : '';
 

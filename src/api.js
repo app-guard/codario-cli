@@ -5,7 +5,7 @@ const {store} = require('./store');
 const jwtDecode = require('jwt-decode');
 
 // Define API path.
-const basepath = 'https://api.app-guard.io/api/';
+const basepath = 'https://api.codario.io/api/';
 
 /**
  * @param {string} path
