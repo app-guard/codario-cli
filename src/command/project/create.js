@@ -23,7 +23,7 @@ const createProjectPrompt = [
     type: 'list',
     name: 'manager',
     message: 'Manager:',
-    choices: ['composer', 'npm'],
+    choices: ['composer', 'npm', 'dockerfile'],
   },
   {
     type: 'string',
@@ -67,23 +67,23 @@ const createProjectAction = () => {
     return;
   }
 
-  function showPrompt(predefault = null) {
-    if (predefault) {
+  function showPrompt(predefined = null) {
+    if (predefined) {
       for (let item of createProjectPrompt) {
         if ('git_path' === item.name) {
-          item.default = predefault.gitUrl;
+          item.default = predefined.gitUrl;
         }
 
         if ('main_branch' === item.name) {
           item.type = 'list';
-          item.choices = predefault.branches;
+          item.choices = predefined.branches;
         }
 
         if ('root_folder' === item.name) {
           let dirs = [];
-          for (let item of predefault.rootDirs) {
-            const dir = item.dir.length ? item.dir : '[root directory]';
-            dirs.push(dir);
+          for (let item of predefined.rootDirs) {
+            const dir = item.dir.length ? item.dir : 'root directory';
+            dirs.push('[' + dir + ']' + ' (' + item.type + ')');
           }
 
           item.type = 'list';
@@ -99,7 +99,7 @@ const createProjectAction = () => {
     }
 
     prompt(createProjectPrompt).then(answers => {
-      createProjectRequest(answers, predefault.rootDirs);
+      createProjectRequest(answers, predefined.rootDirs);
     });
   }
 
@@ -131,7 +131,10 @@ const autofillPrompt = () => {
     }
   }
 
-  let rootDirs = [];
+  let rootDirs = [{
+    type: 'dockerfile',
+    dir: '',
+  }];
 
   function ignoreFunc(file, stats) {
     const files = [
@@ -197,15 +200,17 @@ const autofillPrompt = () => {
  * @return {string}
  */
 const createProjectRequest = (data, rootDirs = []) => {
-  if ('[root directory]' === data.root_folder) {
-    data.root_folder = '';
-  }
+  const matches = data.root_folder.match(/\[(.+?)\] \((.+?)\)/);
 
-  if (!data.hasOwnProperty('manager')) {
-    for (let item of rootDirs) {
-      if (data.root_folder === item.dir) {
-        data.manager = item.type;
-      }
+  if (matches) {
+    if ('root directory' === matches[1]) {
+      data.root_folder = '';
+    } else {
+      data.root_folder = matches[1];
+    }
+
+    if (!data.hasOwnProperty('manager')) {
+      data.manager = matches[2];
     }
   }
 
