@@ -6,7 +6,7 @@ const {isAuthBefore, store} = require('../../store');
 const bestPractices = require('./best-practices');
 
 // Define the config file name.
-const configFileName = '.appguard.json';
+const configFileName = '.codario.json';
 
 // Define the "Create prompt" prompt.
 const configFileAlreadyExistsPrompt = [
@@ -61,7 +61,7 @@ const createConfigFile = (dir = '') => {
       return;
     }
 
-    success('The JSON-config file ".appguard.json" has been created.');
+    success('The JSON-config file ".codario.json" has been created.');
     warning('Remember that you need to commit and push this file to your "main branch". After this the JSON-config file will be imported automatically to the corresponding Codario project.');
   });
 };

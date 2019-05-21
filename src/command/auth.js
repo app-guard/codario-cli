@@ -39,9 +39,9 @@ const alreadyAuthBeforePrompt = [
  */
 const authAction = () => {
   const authPromptHandler = () => {
-    prompt(authPrompt).then(answers =>
-        authRequest(answers),
-    );
+    prompt(authPrompt).then(answers => {
+      authRequest(answers);
+    });
   };
 
   if (isAuthBefore()) {
