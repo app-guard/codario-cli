@@ -8,7 +8,7 @@ const { createProjectAction } = require('./src/command/project/create');
 
 program
   .version('1.0.0')
-  .description('AppGuard - Update automation for open source libraries.');
+  .description('Codario - Update automation for open source libraries.');
 
 program
   .command('auth')

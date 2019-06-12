@@ -11,15 +11,24 @@
     "new_updates_available": [
       {
         "sendmail": {
-          "emails": "[email]",
-          "subject": "New updates available for \"[project:name]\"",
-          "message": "We've found the new updates for your project.<br><br>The packages:<br>[task:packages|,][package:name]: [package:current-version] → [package:new-version][/task:packages]<br><br>[task:url]",
+          "emails": "[user:email]",
+          "subject": "New updates are available for [project:name]",
+          "message": "[snippet:workflow.event.new-updates-available]",
           "cc": "",
           "bcc": ""
         }
       }
     ],
     "ready_to_test": [
+      {
+        "sendmail": {
+          "emails": "[user:email]",
+          "subject": "A task for [project:name] is ready for testing",
+          "message": "[snippet:workflow.event.ready-to-test]",
+          "cc": "",
+          "bcc": ""
+        }
+      }
     ],
     "test_passed": [
       {
@@ -35,9 +44,9 @@
     "failed": [
       {
         "sendmail": {
-          "emails": "[email]",
-          "subject": "The problems have been detected in \"[project:name]\" project",
-          "message": "Unfortunately, during processing the task something went wrong.<br><br>[task:url]",
+          "emails": "[user:email]",
+          "subject": "A task error occurred in [project:name]",
+          "message": "[snippet:workflow.event.failed]",
           "cc": "",
           "bcc": ""
         }
@@ -46,9 +55,9 @@
     "patch_cant_be_applied": [
       {
         "sendmail": {
-          "emails": "[email]",
-          "subject": "The updates couldn't be applied in \"[project:name]\" project",
-          "message": "Unfortunately, something we couldn't apply the update for your task.<br><br>[task:url]",
+          "emails": "[user:email]",
+          "subject": "A task error occurred in [project:name]",
+          "message": "[snippet:workflow.event.failed]",
           "cc": "",
           "bcc": ""
         }
