@@ -1,4 +1,7 @@
 # Codario
+
+[![Codario monitoring](https://status.codario.io/badge/6nMXj73D.svg)](https://status.codario.io/6nMXj73D) 
+
 Codario helps you monitor and update NPM and Composer packages.
 
 
